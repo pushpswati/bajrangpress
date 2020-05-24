@@ -2,6 +2,7 @@ from django.shortcuts import render
 import random
 from django.http import HttpResponse
 from bajranapp.serializers import UserProfileSerializers,CoronaTrackerSerializers,CountryviewsSerializers,GlobalCoronatracker_RecordviewsSerializers
+from bajranapp import paintsvilla
 from django.http import Http404
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -131,7 +132,23 @@ class GlobalCoronatracker_Recordviews(APIView):
     
     
     
+class Paintsvillaviews(APIView):
+    """
+    list all the users profile ,and create the user profile
+    """
+
+    def post(self,request,format=None):
+        data=request.data
+        #print(data)
+        excel_path=paintsvilla.data_parse(data)
+#         if serializer.is_valid():
+#             serializer.save()
+
+        res={"excel":"http://34.206.109.62:8000/media/downloads/"+excel_path}
+        return Response(res, status=status.HTTP_201_CREATED)
+#         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
+
     
     
     
