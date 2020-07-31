@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'corsheaders',
-    'bajranapp.apps.BajranappConfig'
+    'bajranapp.apps.BajranappConfig',
+    'blogAuthorapp.apps.BlogauthorappConfig',
 ]
 
 CORS_ORIGIN_ALLOW_ALL=True
